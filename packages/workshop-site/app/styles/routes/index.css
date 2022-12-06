@@ -1,0 +1,110 @@
+h2 {
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+.centered-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  background-color: var(--color-muted);
+  padding-top: 1rem;
+}
+
+.hero-text {
+  text-align: center;
+}
+
+.hero-text > h1 {
+  font-size: 4rem;
+}
+
+.hero-text > p {
+  color: var(--color-gray-700);
+}
+
+.hero-instructor {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.hero-instructor > img {
+  border-radius: 50%;
+}
+
+.hero-instructor > div > p:nth-child(2) {
+  font-size: 1rem;
+}
+
+.wave {
+  background: linear-gradient(var(--color-muted), var(--color-background));
+  padding-top: 10rem;
+}
+
+hr {
+  border: 1px solid var(--color-tertiary);
+  width: 10%;
+  margin-bottom: 3rem;
+}
+
+.techstack-badges {
+  display: flex;
+  gap: 3rem;
+  padding: 3rem 0;
+}
+
+.techstack-badge {
+  background-color: var(--color-muted);
+  border-radius: 1rem;
+  border: 0.25rem solid var(--color-muted);
+  border-bottom: 0.25rem solid var(--color-secondary);
+  padding: 1.5rem;
+}
+
+.techstack-badge:hover {
+  border: 0.25rem solid var(--color-secondary);
+}
+
+.summary {
+  padding-top: 10rem;
+  text-align: center;
+}
+
+.summary > p {
+  max-width: 50%;
+}
+
+.learning-objectives {
+  padding-top: 8rem;
+}
+
+.learning-objectives > ul {
+  padding-top: 1rem;
+}
+
+.test-drive {
+  padding-top: 8rem;
+}
+
+button {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.25rem;
+  color: var(--color-text);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+}
+
+button:hover {
+  background-color: var(--color-buy-shadow);
+}
+
+.get-started {
+  padding: 8rem 0;
+}

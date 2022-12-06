@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix build",
+    "css": "tailwindcss -o ./app/styles/tailwind.css",
+    "db": "npm run db:reset && npm run db:schema && npm run db:seed",
+    "db:reset": "rm -f ./prisma/dev.db",
+    "db:schema": "npx prisma db push",
+    "db:seed": "npx prisma db seed",
+    "dev": "npm run db && npm run css && remix dev",
+    "start": "remix-serve build"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.7.1",
+    "@remix-run/node": "^1.8.1",
+    "@remix-run/react": "^1.8.1",
+    "@remix-run/serve": "^1.8.1",
+    "isbot": "^3.6.5",
+    "prisma": "^4.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.2.4",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.8.1",
+    "@remix-run/eslint-config": "^1.8.1",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.27.0",
+    "typescript": "^4.8.4"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

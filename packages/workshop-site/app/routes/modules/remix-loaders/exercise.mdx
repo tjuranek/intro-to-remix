@@ -1,0 +1,37 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Exercise: Remix Loaders
+
+Let's create a couple loaders for ourselves! Hopefully you'll see the advantage
+of fetching and rendering on the server!
+
+Under the `exercises/remix-loaders` folder there's some boilerplate code. We now
+have a database and tailwindcss added to our project.
+
+For this exercise, we need to focus on the `/app/models/machine` and
+`/app/routes` files.
+
+- Under the machine model, create two new functions. First, `getMachines` should
+  retrieve all the machines in the database. Then `getMachine(id: number)`
+  should get a specific machine. The
+  [prisma docs](https://www.prisma.io/docs/concepts/components/prisma-client/crud)
+  might be helpful here!
+
+- The `/app/routes/machines` route should have a loader that gets all the
+  machines and renders their names.
+
+- The `/app/routes/machines.$machineId` route should get the `machineId` param
+  in the loader and only display the name of that machine. (This naming
+  convention is how you create nested routes without nested layouts!)
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-loaders/loader-benefits">
+    <button>Loader Benefits</button>
+  </Link>
+
+  <Link to="/modules/remix-actions/updating-our-data-model">
+    <button>Updating Our Data Model</button>
+  </Link>
+</div>

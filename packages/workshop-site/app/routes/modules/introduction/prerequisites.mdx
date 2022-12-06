@@ -1,0 +1,50 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Prerequisites
+
+I'm excited you're taking this workshop! A couple of knowledge and system setup
+items are required in order to effectively follow along.
+
+<br />
+
+### Getting the most out of this course
+
+This workshop is _not_ intended for absolute beginners to web development. If
+you haven't written JavaScript before it will be difficult to follow along.
+
+We're going to be using TypeScript, React, and NodeJS pretty heavily. By no
+means do you need to be an expert, but it's assumed you have experience.
+
+<br />
+
+### Dependencies
+
+- `Git`: How code is pulled down and changed between modules.
+- `NodeJS`: How the JavaScript is ran on your local machine. Version 16 or
+  later.
+- `NPM`: How we use external packages/dependencies, like Remix.
+
+<br />
+
+### Repository
+
+You can clone the workshop repository by running the following:
+
+<CodeBlock
+  text="git clone https://github.com/tjuranek/intro-to-remix.git"
+  language="TypeScript"
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/introduction/prerequisites">
+    <button>Prerequisites</button>
+  </Link>
+
+  <Link to="/modules/introduction/scenario">
+    <button>Scenario</button>
+  </Link>
+</div>

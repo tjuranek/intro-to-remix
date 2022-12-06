@@ -1,0 +1,61 @@
+## What We Learned
+
+You made it! We're done! We covered a lot of information about Remix - let's
+recap.
+
+<br />
+
+### PESPAs
+
+- Progressively Enhanced Single Page Apps
+- They bring simplicity and a great user experience, and arguably a better
+  developer experience.
+- Remix bridges the client/server gap.
+
+<br />
+
+### Creating a Remix App
+
+- The CLI has great tools to scaffold apps quickly.
+- Offically supported stacks target different environments and are production
+  ready.
+
+<br />
+
+### Remix Routes
+
+- They're central to everything in Remix.
+- The file system hierarchy defines routes, nested routes, and nested layouts.
+- We can easily accept params in the url.
+
+<br />
+
+### Remix Loaders
+
+- We run code to access persisted data on the server - the client can't access
+  it.
+- Loaders let us query that data and render it into routes.
+- The network waterfall is significantly improved because Remix knows what needs
+  loaded from the route.
+- Large client side state management solutions are no longer necessary.
+
+<br />
+
+### Remix Actions
+
+- Code to mutate data stays on the server.
+- Actions accept form data and re-hydrate after submission.
+- Forms remove all the input handlers from React and keep things handled by the
+  browser.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-actions/exercises">
+    <button>Exercises</button>
+  </Link>
+
+  <Link to="/modules/in-review/questions">
+    <button>Questions</button>
+  </Link>
+</div>

@@ -1,0 +1,57 @@
+### Progressively Enhanced Single Page App
+
+That's what a Progressively Enhanced Single Page App is. Progressive enhancement
+means we have a functional application even without Javascript, but more
+importantly a simple structure to our application. They stick to browser basics
+and smartly revalidate data in a way that doesn't require a full page reload and
+keeps great UX a top priority.
+
+!['pespa diagram'](https://res.cloudinary.com/epic-web/image/upload/v1665493076/epicweb.dev/blog/The%20Web%E2%80%99s%20Next%20Transition/pespa.svg)
+
+Getting data is a breeze, the initial HTML is server rendered and JavaScript is
+loaded to enhance the experience for user interactions. This is important -
+**enahancement** not **enablement**.
+
+Mutations happen through forms and routing corresponding requests to actions on
+the server. After an action occurs, the router knows to revalidate data for the
+current UI, or redirect to a new page.
+
+**PESPA Pros:**
+
+- Functionality is the baseline.
+- JavaScript is for enhancement, not enablement.
+- Lazy loading and smart pre-fetching is made easy.
+- We write code for the server and hydrate updates to the browser.
+- Using the platform is the default. The browser can do a lot!
+
+<br />
+
+**PESPA Cons:**
+
+- Rendering on the server comes with its own set of challenges compared to
+  client side rendering. Not everything in the browser is available on the
+  server!
+- Limited framework support at the time of this workshop.
+- Edge cases can cause more complexity compared to MPAs or SPAs.
+- Static generation is not a possibility.
+
+<br />
+
+So, this sounds cool. We get the simplicity benefits of keeping things on the
+server, but instead of full page refreshes when mutations occur, we get updates
+streamed from the server to the client. This enables us to maintain the high
+quality UI that users expect nowadays.
+
+But how does Remix fit into this?
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/pespas/short-history-of-web-architecture">
+    <button>Short History of Web Architecture</button>
+  </Link>
+
+  <Link to="/modules/pespas/where-does-remix-fit">
+    <button>Where Does Remix Fit</button>
+  </Link>
+</div>

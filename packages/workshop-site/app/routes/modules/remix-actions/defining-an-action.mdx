@@ -1,0 +1,87 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Defining an Action
+
+Just like loaders, we define `Actions` as exported named functions in route
+modules. Actions correlate to the POST request to the route. It's server side
+code that performs it's "action" and then re-hydrates the server with the
+response.
+
+<CodeBlock
+  text={`
+export async function action({ request }) {
+  const formData = await request.formData();
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const { id } = await createAuthor(name, email);
+  return redirect('/authors/{id}'); // incorrect syntax but my CodeBlock plugin doesn't have a fix :)
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+### Form Data
+
+I was shocked I didn't know this until learning Remix, but your browser has a
+`FormData` API. It's a key/value interface that can be easily sent over `fetch`
+or `XMLHttpRequest`.
+
+The `<Form />` component takes the data your users fill out and sends it to the
+routes corresponding action. Then in the action we're able to access that form
+data: `request.formData()`.
+
+One caveat is that the `name` and `email` values are `FormDataEntryValue` types
+and not strings. They can be casted though! There are better ways to handle this
+form data and validate in the action, but this is a simple example!
+
+### Action Response
+
+The next part is the response. In the above action we're returning a `redirect`
+to the browser. We get the id of the author we just created and then go to the
+individual page for them.
+
+In some cases you don't want to navigate to a new page after you submit data. In
+that case you can return json like you do from loaders!
+
+### Handling Errors
+
+What if your action had errors! Maybe thhe user forgot to add an email! Since we
+can return json from loaders we can load that data into a route and display
+error messages:
+
+<CodeBlock
+  text={`
+export function action() {
+  return json({ message: 'Name required!' }, { status: 500 } );
+}
+export default function Route() {
+  const data = useActionData<typeof action>();
+  return (<p>{data?.message ?? ""}</p>);
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+We can call `useActionData` to pull in the response from our action. Keep in
+mind that this is undefined until the action is invoked!
+
+There's a lot of levers Remix gives us to customize these actions. We don't
+always want to mutate from a form - or maybe we have multiple actions that need
+to be on the same route. Maybe we aren't posting data but still need to indicate
+a mutation should occur. Remix covers many different use cases pretty easily.
+
+Let's try out actions for ourselves.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-actions/building-a-form">
+    <button>Building a Form</button>
+  </Link>
+
+  <Link to="/modules/remix-actions/exercise">
+    <button>Exercise</button>
+  </Link>
+</div>

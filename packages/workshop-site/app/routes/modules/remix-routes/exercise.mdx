@@ -1,0 +1,33 @@
+## Exercise: Remix Routes
+
+Time for our next exercise! Let's create our own routes!
+
+Under the `exercies/remix-routes` folder in the workshop repository you'll find
+a boilerplate Remix application. It's just the default one created by
+`create-remix`.
+
+Under `/app/routes` there is just one route - the index route.
+
+Let's do a few things to try out what we just learned:
+
+- Create a new `/machines` route that just renders a heading saying "Machines".
+- Add a sidebar and content section for the machines pages as a new layout. The
+  CSS classes under `/styles/global.css` are available to you on any route!
+- Setup a new `/machines/$machineId` route that displays the value of the passed
+  `machineId` in the content section.
+
+<br />
+
+If you get stuck, the answers are in the `answers/remix-routes` folder.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-routes/nested-layouts">
+    <button>Nested Layouts</button>
+  </Link>
+
+  <Link to="/modules/remix-loaders/building-a-data-model">
+    <button>Building a Data Model</button>
+  </Link>
+</div>

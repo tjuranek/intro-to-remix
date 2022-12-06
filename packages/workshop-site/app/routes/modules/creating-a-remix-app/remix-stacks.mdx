@@ -1,0 +1,33 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Remix Stacks
+
+`Remix Stacks` are pre-configured Remix applications that are ready for
+deployment. The official stacks that are built into the CLI all include a
+database, automatic deployment pipelines, authentication, testing, linting, and
+code formatting.
+
+There are currently three stacks available, the `Blues` stack, the `Indie`
+stack, and the `Grunge` stack. They differ on a few things, but primarily
+deployment targets and database type.
+
+To get started with stacks run you add a `--template` flag with the desired
+stack name to the `create-remix` package upon execution:
+
+<CodeBlock
+  text="npx create-remix@latest --template remix-run/indie-stack my-project"
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/creating-a-remix-app/the-remix-cli">
+    <button>The Remix CLI</button>
+  </Link>
+
+  <Link to="/modules/creating-a-remix-app/exercise">
+    <button>Exercise</button>
+  </Link>
+</div>

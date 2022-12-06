@@ -1,0 +1,34 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Exercise: Remix Stacks
+
+Take a couple minutes to create a new Remix application without a stack. We'll
+go over what the MVP of a Remix website is from a code perspective.
+
+<CodeBlock
+  text="npx create-remix@latest my-project"
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+<br />
+
+When prompted:
+
+- Install the `create-remix` package.
+- Select a basic app type.
+- Choose `Remix App Server` for a deployment target.
+- Select TypeScript.
+- Opt in to running `npm install`.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/creating-a-remix-app/remix-stacks">
+    <button>Remix Stacks</button>
+  </Link>
+
+  <Link to="/modules/remix-routes/defining-a-route">
+    <button>Defining a Route</button>
+  </Link>
+</div>

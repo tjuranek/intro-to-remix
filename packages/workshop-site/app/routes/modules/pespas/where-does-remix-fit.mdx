@@ -1,0 +1,48 @@
+## Where Does Remix Fit?
+
+`Remix` is the leading web framework to offer everything we just described from
+a PESPA. It bridges the gap between the client and server. It's an opinionated
+web framework with sensible defaults that stick to the platform in order to make
+developing a great UI from the server very easy.
+
+!['pespa diagram'](https://res.cloudinary.com/epic-web/image/upload/v1665491189/epicweb.dev/blog/The%20Web%E2%80%99s%20Next%20Transition/pespa-remix.svg)
+
+With Remix, the complexity behind routing, data fetching, data mutation, and
+rendering is handled for us. It's smart about what needs to be loaded and
+rendered - or revalidated after a mutation occurs.
+
+Organizing our project in the predictable way Remix expects provides many
+benefits. Remix has nested routing which makes route-based code splitting
+possible. Loaders and actions provide predictable ways to handle data without
+having to keep track of a client state. We see application performance and user
+experience prioritized while also getting a great developer experience.
+
+I myself have been really skeptical about frameworks in the past. I'm the type
+of person who likes full control over the software I'm building and I want to
+build features my way. The more I use Remix, the more I'm surpised at how
+sensible the opinions it has actually are. I've never been able to get so much
+done so quickly.
+
+In the rest of this workshop I want to over the three most important features of
+Remix:
+
+- `Routing` (What's nested routing and why does it matter?)
+- `Data Fetching` (How does fetching and rendering from the server benefit us?)
+- `Data Mutation` (I'm familiar with my fetch requests and form libraries, do I
+  really need to switch?)
+
+<br />
+
+Before we can dive into these three things, we need to get a project set up!
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/pespas/progressively-enhanced-single-page-app">
+    <button>Progressively Enhanced Single Page App</button>
+  </Link>
+
+  <Link to="/modules/creating-a-remix-app/the-remix-cli">
+    <button>The Remix CLI</button>
+  </Link>
+</div>

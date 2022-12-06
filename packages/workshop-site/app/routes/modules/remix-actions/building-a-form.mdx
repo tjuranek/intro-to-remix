@@ -1,0 +1,51 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Building a Form
+
+Data mutation in Remix is build on top of two fundamental web APIs: `<form>` and
+`HTTP`. Let's go over how it works.
+
+<br />
+
+### Forms
+
+"Really, we want to use forms? I love my hook based library for keeping form
+state up to date and then submitting it." I was skeptical too until I saw it in
+action.
+
+The Remix `<Form />` component lets us declaratively perform data mutations
+without the full page refresh issues and `preventDefault` work-around we
+commonly see using native `<forms />` in React. Let's look at a basic example:
+
+<CodeBlock
+  text={`
+export default function SomeRoute() {
+  return (
+    <Form method="post">
+      <input type="text" name="name" />
+      <input type="text" name="email" />
+      <button type="submit">Submit</button>
+    </Form>
+  );
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+We have a `<form>` element that will `post` it's data when submitted. Yes, the
+browser keeps track of the data for you! The `formData` will have `name` and
+`email` properties. But where does it get submitted? Where is it posting that
+data? That's where Remix actions come in!
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-actions/updating-our-data-model">
+    <button>Updating Our Data Model</button>
+  </Link>
+
+  <Link to="/modules/remix-actions/defining-an-action">
+    <button>Defining an Action</button>
+  </Link>
+</div>

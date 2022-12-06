@@ -1,0 +1,88 @@
+## Short History of Web Architecture
+
+Remix is a `PESPA` - a **progressively enhanced single page application**.
+Before we can really understand what that means we need to review a couple of
+previously popular web architectures.
+
+<br />
+
+### Multi-Page Apps (MPAs)
+
+In earlier days, applications were written for the server. The browser was
+responsible for submitting requests to retrieve and mutate data.
+
+!['mpa diagram'](https://res.cloudinary.com/epic-web/image/upload/v1665491189/epicweb.dev/blog/The%20Web%E2%80%99s%20Next%20Transition/mpa.svg)
+
+Getting documents was simple. The user entered a URL and the server determined
+what HTML needed sent as a response. The browser gave a pending state, typically
+through the favicon, and then returned the requested data in HTML.
+
+Posting data was really only done one way. A user would submit a form and the
+browser would send that serialized form data to the server. The server would
+mutate the persisted data in the database and return a redirect so the browser
+could follow the above process for getting updated data to the client.
+
+**MPA Pros:**
+
+- The mental model behind MPAs is really simple.
+- State is handled by cookies sent over requests.
+
+<br />
+
+**MPA Cons:**
+
+- Full page refreshes limit or make good UX difficult.
+- It's impractical, imagine a full refresh every time a tweet gets liked.
+
+<br />
+
+### Single Page Apps (SPAs)
+
+Skipping a couple trends between MPAs and SPAs, Single Page Apps moved much of
+the code from the server to the client. This let us create awesome user
+experiences by running much of our application in client side JavaScript.
+
+!['spa diagram'](https://res.cloudinary.com/epic-web/image/upload/v1665491194/epicweb.dev/blog/The%20Web%E2%80%99s%20Next%20Transition/spa.svg)
+
+Getting documents was much different than MPAs. The user would get a static
+file - typically over a CDN - that loads JavaScript to handle routing, data
+fetching, and rendering. The server was only responsible for getting the
+persisted data.
+
+Mutations happened when a user submitted form changed the client data state.
+Actions submitted to a server would come back with new data, causing client
+re-renders.
+
+**SPA Pros:**
+
+- Much more control of the clients browser.
+- Powerful capabilities to build great user experiences.
+
+<br />
+
+**SPA Cons:**
+
+- State management took up lots, maybe even most, of the code we wrote.
+- Keeping state up to date and dealing with client/server interaction was the
+  primary complexity in most SPAs.
+- We wrote our own form handling with `preventDefault()` and `fetch`.
+- Code was duplicated a lot between the client and server.
+
+<br />
+
+Hisotrically we've seen Multi-Page Apps and Single-Page Apps have their
+advantages and disadvantages. Wouldn't it be nice if we could keep the code on
+the server and have a simple mental model, but also maintain control of the
+browser so we can provide great user experiences?
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/introduction/scenario">
+    <button>Scenario</button>
+  </Link>
+
+  <Link to="/modules/pespas/progressively-enhanced-single-page-app">
+    <button>Progressively Enhanced Single Page App</button>
+  </Link>
+</div>

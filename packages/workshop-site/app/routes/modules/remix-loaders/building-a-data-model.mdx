@@ -1,0 +1,68 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Building a Data Model
+
+Pretty much every web application needs to retrieve data. Remix has an
+opinionated way to do that through `Loaders`.
+
+Before we can effectively show a loader there needs to be data to fetch! A
+popular way to interact with a database in JavaScript applications is `prisma`.
+It's a Node.js and Typescript ORM that makes querying easy.
+
+The setup for prisma isn't important for this workshop - lets get right to
+querying data.
+
+### Server Side Code in Remix
+
+Remix runs in Node. We have all the flexibility that server side JavaScript
+gives us available when a request to your Remix server comes in.
+
+It's important to understand this. We're running a server rendered application.
+Remix takes care of the routing for us, but what happens when a request comes in
+is up to us.
+
+Let's make a model that would let us query a list of authors from our prisma
+client.
+
+### Authors Model in Remix
+
+We'll create a new `app/models` folder where we keep all our queries to our
+database models. We want to export a function we can import into a Remix loader
+later. It might look like this:
+
+<CodeBlock
+  text={`
+export async function getAuthors() {
+  return await prisma.authors.findMany();
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+We're then able to import that function anywhere on our server.
+
+<CodeBlock
+  text={`
+import { getAuthors } from '~/models/author';
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+Since the only thing we return to the client is the result of our route this is
+totally safe. The client doesn't have direct database access at all.
+
+Let's see how we can call this `getAuthors` function from the Remix route.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-routes/exercise">
+    <button>Exercise</button>
+  </Link>
+
+  <Link to="/modules/remix-loaders/defining-a-loader">
+    <button>Defining a Loader</button>
+  </Link>
+</div>

@@ -1,0 +1,26 @@
+## Exercise: Remix Actions
+
+Our last exercise! Let's get a couple actions created!
+
+Under `exercise/remix-actions` there are starter files. Two routes exist, one
+for a machines list and one for creating machines. You have markup ready for
+you. Your task is to make those pages functional!
+
+- Under `routes/machines.create.tsx` add an action that takes the `name` and
+  `model` from the form. Create a machine through the `machine model` and then
+  `redirect` to the `/machines` route. Your new machine should appear!
+
+- Under `routes/machines` add a delete button to each machine list item. It
+  should call an action to delete the machine, but we stay on the same page!
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-actions/defining-an-action">
+    <button>Defining an Action</button>
+  </Link>
+
+  <Link to="/modules/in-review/what-we-learned">
+    <button>What We Learned</button>
+  </Link>
+</div>

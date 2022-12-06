@@ -1,0 +1,42 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Rendering Data
+
+Remix allows us to hook into that loader data on the same route with the
+`useLoaderData()` hook. It's even type safe!
+
+<CodeBlock
+  text={`
+export async function loader() {
+  const authors = getAuthors();
+  return json({ authors });
+}
+
+export default function Route() {
+  const { authors } = useLoaderData<typeof loader>();
+  return (); // return jsx to render data
+}
+
+`} language="typescript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+Isn't this awesome! End to end type saftey! Any time a user goes to this route,
+Remix **automatically** calls a loader if it's available, waits for that data to
+come back, renders the route's component on the server, and hydrates the HTML
+and CSS back to the client. 🤯
+
+I want to go over a couple benefits that show just how quickly we're able to
+build performant websites using loaders.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-loaders/defining-a-loader">
+    <button>Defining a Loader</button>
+  </Link>
+
+  <Link to="/modules/remix-loaders/loader-benefits">
+    <button>Loader Benefits</button>
+  </Link>
+</div>

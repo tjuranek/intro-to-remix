@@ -1,0 +1,76 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Nested Layouts
+
+It's very common to share layouts between different routes in web applications.
+Take this workshop site for example! The main page has a unique layout, but
+everything under `/modules` path uses a layout with a menu and sidebar.
+
+You might think I created a layout component and then used that on every route,
+but you'd be wrong. Remix makes it even easier with Nested Layouts. The best way
+to explain this is to show it.
+
+This is the route hierarchy of this website:
+
+<CodeBlock
+  text={`
+    app
+    -- modules
+    -- -- introduction (/modules/introduction)
+    -- -- -- prerequisites.mdx (/modules/introduction/prerequisites)
+    -- -- -- ...
+    -- -- ...
+    -- index.tsx (/)
+    -- modules.tsx (/modules)
+  `}
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+<br />
+
+Ignore the `.mdx` extension. Remix can turn markdown files into routes. The
+focus here is that I have a modules base route, then a modules folder with
+different routes under that.
+
+The `modules.tsx` file defines the layout I want every route under `/modules`
+folder to use. I can control where I want my subroutes to render in the layout
+using a Remix component called `<Outlet />`. It means the rest of the route will
+render in that specific section. Here's a basic example:
+
+<CodeBlock
+  text={`
+    return (
+      <div className="layout">
+        <div className="menu" />
+        <div className="sidebar" />
+        <div className="content">
+          <Outlet />
+        </div>
+      </div>
+    )
+
+`} language='TypeScript' showLineNumbers={false} theme={dracula} />
+
+<br />
+
+Anything that is a nested route below this `/modules` path will get rendered in
+the `<Outlet />`. Right now you're seeing my markdown pages get rendered in the
+`<Outlet />` of my `/modules` nested layout. Pretty cool, right?
+
+<br />
+
+We went over a lot, but I hope it shows that routing in Remix is really
+powerful. Let's do an exercise to put everything together.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-routes/route-params">
+    <button>Route Params</button>
+  </Link>
+
+  <Link to="/modules/remix-routes/exercise">
+    <button>Exercise</button>
+  </Link>
+</div>

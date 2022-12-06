@@ -1,0 +1,37 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## The Remix CLI
+
+The `Remix CLI` comes from the `@remix-run/dev` package. It also includes the
+compiler.
+
+To get a Remix project created, you can execute the `create-remix` package. By
+default it'll create a new project from scratch. When running the package you
+will be walked through some project setup like TypeScript configuration and
+deployment targets.
+
+You can try this out with the `node package executer` - commonly known as `npx`.
+
+<CodeBlock
+  text="npx create-remix@latest my-project"
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+<br />
+
+This is a great way to get a minimal configuration Remix application up and
+running, but what if there was a way to use a templated Remix application that
+are already configured for production use?
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/pespas/where-does-remix-fit">
+    <button>Where Does Remix Fit?</button>
+  </Link>
+
+  <Link to="/modules/creating-a-remix-app/remix-stacks">
+    <button>Remix Stacks</button>
+  </Link>
+</div>

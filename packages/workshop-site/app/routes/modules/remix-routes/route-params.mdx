@@ -1,0 +1,40 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Route Params
+
+Remix makes identifing segments of the path as parameters simple. By using the
+`$` sybmol we can name parts of the path with custom variable names.
+
+`/authors/$author` will have the `author` variable available on the request.
+`/authors/$author/$book` will have both `author` and `book`.
+
+These params are available either in `Loaders` (which we cover in the next
+section) or on the `useParams` hook!
+
+<CodeBlock
+  text={`
+  return function AuthorRoute() {
+    const { author } = useParams();
+    return <p>{author}</p>
+  }
+`}
+  showLineNumbers={false}
+  language="TypeScript"
+  theme={dracula}
+/>
+
+<br />
+
+One additional part of routing in Remix we haven't talked about yet is layouts!
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-routes/nested-routing">
+    <button>Nested Routing</button>
+  </Link>
+
+  <Link to="/modules/remix-routes/nested-layouts">
+    <button>Nested Layouts</button>
+  </Link>
+</div>

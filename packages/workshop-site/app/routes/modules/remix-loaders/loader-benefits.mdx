@@ -1,0 +1,99 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Loader Benefits
+
+Other than being really easy to use, `Loaders` come with an awesome performance
+advantage and a relieving DX advantage.
+
+### Reviewing the Network Waterfall
+
+Remember how I said pretty much everything in Remix revolves around routes? So
+do loaders.
+
+Because Remix knows **everything** that needs loaded just from the route, it can
+kick off all the requests for that data at once. If we compare this to a
+traditional SPA where requests are kicked off by client side JavaScript we see
+much different network waterfalls.
+
+!['flow chart'](https://cdn.discordapp.com/attachments/955668671940935743/1049506512055320596/Screen_Shot_2022-12-05_at_7.02.49_PM.png)
+
+Without Remix, requests initialize when the requesting components load. Our
+client side bundle has to wait to render up stream before downstream requests
+start. Again, Remix knows all loaders that need called just from the route.
+Everything starts at once!
+
+### State Management
+
+Here's probably my favorite part of Remix. No more large client side state
+objects to edit. All of the data on a page is hydrated in through loaders. Remix
+keeps track of that state for you!
+
+But what about updates? We'll see more in a bit, but Remix mutates data through
+`<forms />` and will automatically revalidate state for you. Let's compare the
+previous `getAuthors` loader call to something we're familiar with, like Redux.
+
+First we need some state object:
+
+<CodeBlock
+  text={`
+const state = { authors: [] }
+
+`} language="typescript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+Then we need an action to set that state when data comes in:
+
+<CodeBlock
+  text={`
+export function setAuthors(authors) {
+  return { type: 'authors/SET', payload: { authors } }
+}
+
+`} language="typescript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+And then a reducer needs to accept that action and return a new state.
+
+<CodeBlock
+  text={`
+export function reducer(state = {}, action = {}) {
+  switch (action.type) {
+    case: 'authors/SET':
+      const newState = {
+        authors: action.payload.authors
+        ...state
+      }
+      return newState;
+    default:
+      return state;
+  }
+}
+
+`} language="typescript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+That's three different blocks of code just to setup our state, invoke changes,
+and handle actions. We have to do this for **every. single. action.**. We
+haven't even touched how we handle asynchronous code with `redux-thunk` or
+`redux-saga`!
+
+Opting into an opinionated framework like Remix removes so much work and
+complexity from our applications. Remix sticks to browser defaults with `fetch`
+requests and uncomplicated re-validation when necessary.
+
+Let's do an exercise where we try this out for ourselves.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-loader/rendering-data">
+    <button>Rendering Data</button>
+  </Link>
+
+  <Link to="/modules/remix-loaders/exercise">
+    <button>Exercise</button>
+  </Link>
+</div>

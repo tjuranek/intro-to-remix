@@ -1,0 +1,55 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Updating Our Data Model
+
+Just like Remix can get data with `Loaders`, it can modify data through
+`Actions`. As before, in order to get started we need to update our model to
+support modification.
+
+<br />
+
+### Creating New Authors
+
+In the last section we created an example function to get an author. This time
+lets create an author.
+
+<CodeBlock
+  text={`
+export function createAuthor(name: string, email: string) {
+  await prisma.user.create({
+    data: {
+      name,
+      email,
+    }
+  });
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+### Other Mutations
+
+You might be wondering how we can do other mutations to our data, like updates
+and deletes. We could totally write more functions to support that, but that's
+not the point of this section.
+
+The takeaway is that we can use models, or really any code running on our Remix
+server, to edit our data. Maybe you aren't even modifying persisted data!
+Nothing is stopping you from updating an in-memory cache, reading the file
+system, or emitting events. Anything you would normally do on the server is
+still possible with Remix.
+
+Let's look at how to post that `name` and `email` in the above example.
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-loaders/exercise">
+    <button>Exercise</button>
+  </Link>
+
+  <Link to="/modules/remix-actions/building-a-form">
+    <button>Building a Form</button>
+  </Link>
+</div>

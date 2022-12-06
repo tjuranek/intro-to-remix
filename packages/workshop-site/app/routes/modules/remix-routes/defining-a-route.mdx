@@ -1,0 +1,75 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Defining a Route
+
+Routing is possibly the most powerful and important feature in Remix. Everything
+starts with routes from your compiler to user interaction.
+
+<br />
+
+### Terminology
+
+It's important we're on the same page about what a route is versus a path.
+
+A route in Remix is a `JavaScript module` with some predictable exports that
+corresponds to a specific path - or segment of the URL. For example, `/posts` is
+a `path` that would correlate to the `Posts` route.
+
+<br />
+
+### Defining a Route
+
+The default location for all routes in Remix is the `app/routes` folder. We can
+define a new route by creating a new file - which would be a JavaScript module -
+and exporting a `default` function from it.
+
+The only requirement of this default function is that it must return the JSX
+you'd like to render at that route. As you can imagine, that might be a very
+basic block of code:
+
+<CodeBlock
+  text={`
+  export default function SomeRouteName() {
+    return <p>This text shows up on the page!</p>
+  }
+
+`} showLineNumbers={false} theme={dracula} language="TypeScript" />
+
+<br />
+
+You can treat this function like pretty much any other React component. Add UI
+by importing other components or initialize some hooks.
+
+Define multiple routes by creating multiple files under the `app/routes` folder.
+The `index` route would map to the `/` path in your url. A `login.tsx` file
+would correspond to the `/login` path. Your folder structure would look like
+this:
+
+<br />
+
+<CodeBlock
+  text={`
+    app
+    -- routes
+    -- -- index.jsx (/)
+    -- -- login.jsx (/login) 
+  `}
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+<br />
+
+But what if I wanted to create more specific routes under multiple paths?
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/creating-a-remix-app/exercise">
+    <button>Exercise</button>
+  </Link>
+
+  <Link to="/modules/remix-routes/nested-routing">
+    <button>Nested Routing</button>
+  </Link>
+</div>

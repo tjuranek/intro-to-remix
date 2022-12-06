@@ -1,0 +1,59 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Defining a Loader
+
+The route modules we defined in the last section are capable of more than just
+default exports of the JSX you want to render. We can also export a `loader`.
+It's a named export that gets called before the JSX is rendered on the server.
+
+The loaders correlate to GET requests to that route. We can query data on the
+server in these functions and return it as json. Let's see a couple examples:
+
+<CodeBlock
+  text={`
+import { getAuthors } from '~/models/author';
+
+export async function loader() {
+  const authors = await getAuthors();
+  return json({ authors });
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+Above is a basic loader that retrieves the authors from the database. **This
+always happens on the server.** The response has an OK (200) status with a body
+that contains a json object with the authors.
+
+Let's look at a little bit of a more complex example:
+
+<CodeBlock
+  text={`
+export async function loader(params) {
+  const { authorId, bookId } = params;
+  const author = getAuthor(authorId);
+  const book = getBook(bookId);
+  return json({ author, book }); 
+}
+
+`} language="TypeScript" showLineNumbers={false} theme={dracula} />
+
+<br />
+
+This gets the `$authorId` and `$bookId` from the path and uses them to fetch
+data. We then return both items.
+
+What if we wanted to display that data though?
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-loader/building-a-data-model">
+    <button>Building a Data Model</button>
+  </Link>
+
+  <Link to="/modules/remix-loaders/rendering-data">
+    <button>Rendering Data</button>
+  </Link>
+</div>

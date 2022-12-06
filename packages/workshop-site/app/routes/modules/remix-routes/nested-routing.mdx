@@ -1,0 +1,67 @@
+import { CodeBlock, dracula } from 'react-code-blocks';
+
+## Nested Routing
+
+As we just learned, routing in Remix is based on the `file hierarchy` you define
+your routes under. If you wanted to create multiples levels to your path you'd
+create a folder and put more routes under it.
+
+If we wanted to create a page for an individual author of a book, we might want
+that path to be `/authors/georgeorwell`. The corresponding file structure would
+be:
+
+<CodeBlock
+  text={`
+    app
+    -- routes
+    -- -- authors
+    -- -- -- georgeorwell.jsx (/authors/georgeorwell)
+    -- -- index.jsx (/)
+  `}
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+<br />
+
+Nesting routes in a file heirarchy like this is known as `nested routing`. We're
+able to create all of our paths and pages exclusively determined by where in the
+file system the corresponding file is.
+
+We didn't have to define a router or import all of our pages into a single file
+to register them with the router. I'm especially happy we don't have to write
+our own function for generating routes either.
+
+As you can imagine, we could express many routes under many files very easily:
+
+<CodeBlock
+  text={`
+    app
+    -- routes
+    -- -- authors
+    -- -- -- index.jsx (/authors)
+    -- -- -- $author.jsx (/authors/$author)
+    -- -- index.jsx (/)
+    -- -- login.jsx (/login)
+    -- -- logout.jsx (/logout)
+  `}
+  showLineNumbers={false}
+  theme={dracula}
+/>
+
+<br />
+
+So this is sweet, without any code we're defining routes and associating them to
+paths. But what's that `$author` thing above?
+
+import { Link } from '@remix-run/react';
+
+<div className="button-group">
+  <Link to="/modules/remix-routes/defining-a-route">
+    <button>Defining a Route</button>
+  </Link>
+
+  <Link to="/modules/remix-routes/route-params">
+    <button>Route Params</button>
+  </Link>
+</div>

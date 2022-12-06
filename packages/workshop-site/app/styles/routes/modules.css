@@ -1,0 +1,76 @@
+.layout {
+  background-color: var(--color-background-module);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.menu {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+  grid-column: span 4;
+  justify-content: center;
+  min-height: 8vh;
+  width: 25%;
+}
+
+.menu > a {
+  color: var(--color-text);
+}
+
+.menu > a:hover {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.sidebar {
+  height: 100%;
+  width: 85%;
+  margin: 0 7.5%;
+  min-height: 92vh;
+}
+
+.sidebar h3 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+}
+
+.sidebar ul {
+  margin: 1rem 0;
+}
+
+.sidebar > hr {
+  margin: 0.5rem 0;
+}
+
+.sidebar-link {
+  align-items: center;
+  color: var(--color-text);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  padding-left: 0.5rem;
+}
+
+.sidebar-link:hover {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.sidebar-link > svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.content {
+  background-color: var(--color-background-module-page);
+  border-radius: 1rem;
+  color: var(--color-text-module);
+  grid-column: span 3;
+}
+
+.content > .padding {
+  width: 85%;
+  margin: 2rem 7.5%;
+}
